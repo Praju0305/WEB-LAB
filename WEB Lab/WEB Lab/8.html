@@ -1,10 +1,8 @@
 
 <!DOCTYPE html>
-<html lang=""en">
+<html>
 <head>
     <title>Avg Marks</title>
-    <meta charset=""UTF-8">
-    <meta name="viewport" content="width=device-width initial-scale=1.0">
     <style>
        fieldset{
         margin-left: 35%;
@@ -38,47 +36,52 @@
         <input type="text" id="sub-2"><br>
         <label for="sub-3">Third Test</label>
         <input type="text" id="sub-3"><br>
-       
-        <label for="check"><input type="checkbox" id="check" required> All the details submitted are true</label><br>
         <button type="button" onclick="validate()">Submit</button>
     </form>
 </fieldset>
 </div>
     <script>
         function validate(){
-            var name=document.getElementById("namee").value
-            var regno=document.getElementById("reg-no").value
-            var subcode=document.getElementById("sub-code").value
-            var m1=document.getElementById("sub-1").value
-            var m2=document.getElementById("sub-2").value
-            var m3=document.getElementById("sub-3").value
+            var name=document.getElementById("namee").value;
+            var regno=document.getElementById("reg-no").value;
+            var subcode=document.getElementById("sub-code").value;
+            var m1=document.getElementById("sub-1").value;
+            var m2=document.getElementById("sub-2").value;
+            var m3=document.getElementById("sub-3").value;
            
             if(name===""){
-                alert("Input your name")
+                alert("Input your name");
+                return;
             }
             else if(regno===""){
-                alert("Input your reg number")
+                alert("Input your reg number");
+                return;
             }
             else if (subcode===""){
-                alert("Input the subject code")
+                alert("Input the subject code");
+                return;
             }
             else if(m1==="" ){
-                alert("Input subject -1 marks")
+                alert("Input subject -1 marks");
+                return;
             }
             else if(m2===""){
-                alert("input subject 2 marks")
+                alert("input subject 2 marks");
+                return;
+
             }
             else if(m3===""){
-                alert("input subject 3 marks")
+                alert("input subject 3 marks");
+                return;
             }
-            sub1=parseFloat(document.getElementById("sub-1").value)
-            sub2=parseFloat(document.getElementById("sub-2").value)
-            sub3=parseFloat(document.getElementById("sub-3").value)
-            var avg=0
-            var min = Math.min(sub1,sub2,sub3)
+            sub1=parseFloat(document.getElementById("sub-1").value);
+            sub2=parseFloat(document.getElementById("sub-2").value);
+            sub3=parseFloat(document.getElementById("sub-3").value);
+            var avg=0;
+            var min = Math.min(sub1,sub2,sub3);
             var best = sub1+sub2+sub3-min;
-            avg = best/2
-            alert("Name = "+name+"\nReg No = "+regno+"\nSubject code = "+subcode+"\nSubject 1 = "+m1+"\nSubject 2 = "+m2+"\nSubject 3 = "+m3+"\nAgerage of best two marks = "+avg)
+            avg = best/2;
+            alert("Name = "+name+"\nReg No = "+regno+"\nSubject code = "+subcode+"\nSubject 1 = "+m1+"\nSubject 2 = "+m2+"\nSubject 3 = "+m3+"\nAgerage of best two marks = "+avg);
         }
     </script>
 </body>
