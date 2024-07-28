@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+        fieldset {
+            width: 50%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+    <form id="myForm">  
+        <fieldset>
+            <legend style="text-align: center; font-size: x-large;">Student Form </legend>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <br>
+            <br>    
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <br>
+            <br>
+        <label for="mobile">Mobile No:</label>
+        <input type="number" id="mobile" required>
+        <br>
+            <br>
+        <label for="gender">Gender:</label>
+        <select id="gender">
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+        <br>
+        <br>
+        <label for="color">Favourite Color </label>
+        <input type="text" id="color" >
+        <br>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+        <label for="displayInfo"><h2>Combined Info: </h2></label>
+    <textarea id="displayInfo" rows="5" cols="30" readonly></textarea>
+    </fieldset>
+    <script >
+        const form = document.getElementById("myForm");
+const displayInfo = document.getElementById("displayInfo");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  if (validateForm()) {
+    displayCombinedInfo();
+  }
+});
+
+function validateForm() {
+  const emailInput = document.getElementById("email");
+  const mobileInput = document.getElementById("mobile");
+  const genderInput = document.getElementById("gender");
+
+
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (
+    emailInput.value.trim() === "" ||
+    !emailRegex.test(emailInput.value.trim())
+  ) {
+    alert("Email is required in correct format");
+    return false;
+  }
+
+  if (!/^\d{10}$/.test(mobileInput.value.trim())) {
+    alert("Mobile No should be exactly 10 digits");
+    return false;
+  }
+
+  if (genderInput.value === "") {
+    alert("Gender is required");
+    return false;
+  }
+  return true;
+}
+
+function displayCombinedInfo() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const mobile = document.getElementById("mobile").value;
+  const gender = document.getElementById("gender").value;
+  const color = document.getElementById("color").value;
+
+  const combinedInfo = `Name: ${name}\nEmail: ${email}\nMobile No: ${mobile}\nGender: ${gender}\nColor : ${color}`;
+  displayInfo.value = combinedInfo;
+}
+    </script>
+</body>
+</html>

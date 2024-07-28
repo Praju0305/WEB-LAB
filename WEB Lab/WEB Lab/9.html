@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<title>Validation Form</title>
+		<style>
+			fieldset{
+        margin-left: 38%;
+        margin-right: 38%;
+
+       }
+       legend{
+        text-align: center;
+       }
+       label{
+        display: inline-block;
+        padding-bottom: 20px;
+        min-width: 150px;
+       }
+       .btn{
+        padding-left: 35%;
+        padding-right: 35%;
+       }
+		</style>
+		<script>
+            function validate(){
+	let userId=document.getElementById("user").value;
+	let name=document.getElementById("name").value;
+	let password=document.getElementById("pass").value;
+	let email=document.getElementById("email").value;
+	
+	
+	let userIdRegex = /^[a-zA-Z0-9]{5,12}$/;
+    let nameRegex = /^[a-zA-Z]{15,}$/;
+    let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+	
+	if(!userIdRegex.test(userId)){
+		alert("User ID must be between 5 to 12 characters & can contain only alphanumeric");
+		return;
+	}
+	
+	if(!nameRegex.test(name)){
+		alert("name must contain only alphabets and should be at least 15 characters long");
+		return;
+	} 
+	
+	if(!passwordRegex.test(password)){
+		alert("password must be 8 characters long containing at least one uppercase,one special character and alphanumeric");
+		return;
+	} 
+	if(!emailRegex.test(email)){
+		alert("Invalid email address");
+		return;
+	}
+	alert("Form submitted successfull");
+}
+        </script>
+	</head>
+	<body>
+		<div class="container">
+            <fieldset>
+                <legend>Validation Form</legend>
+		<form>
+			
+			<label for="user">User ID</label>
+			
+			<input type="text" id="user" placeholder="Your User ID">
+			<br>
+			<label for="name">Name</label>
+		
+			<input type="text" id="name" placeholder="Your Name">
+			<br>
+			<label for="password">Password</label>
+			
+			<input type="password" id="pass" placeholder="Your Password">
+			<br>
+			<label for="Email">Email</label>
+			
+			<input type="text" id="email" placeholder="Your Email">
+			<br><div class="btn">
+			<button onclick="validate()">Submit</button>
+        </div>
+ 		</form>
+        </fieldset>
+ 		</div>
+	</body>
+</html>
